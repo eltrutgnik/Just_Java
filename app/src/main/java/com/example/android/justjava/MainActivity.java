@@ -28,15 +28,15 @@ public class MainActivity extends ActionBarActivity {
         CheckBox whippedCreamCheckBox = (CheckBox) findViewById(R.id.whipped_cream_checkbox);
         boolean hasWhippedCream = whippedCreamCheckBox.isChecked();
 
-        int price = calculatePrice();
-        displayMessage(createOrderSummary(price, hasWhippedCream));
-        //displayPrice(quantity * 5);
-        //calculatePrice(2,10);
+        CheckBox chocolateChipCheckBox = (CheckBox) findViewById(R.id.chocolate_chip_checkbox);
+        boolean hasChocolateChip = chocolateChipCheckBox.isChecked();
 
+        int price = calculatePrice();
+        displayMessage(createOrderSummary(price, hasWhippedCream, hasChocolateChip));
     }
 
     /**
-     * This method is called when the increment button is clicked.
+     * This method is called when the increment button is clicked./
      */
     public void increment(View view) {
 
@@ -88,11 +88,12 @@ public class MainActivity extends ActionBarActivity {
         return price;
     }
 
-    private String createOrderSummary(int price, boolean hasWhippedCream){
+    private String createOrderSummary(int price, boolean hasWhippedCream, boolean hasChocolateChip){
         String cname = "James";
         //int price = calculatePrice();
         String summaryMessage = "Name: " + cname ;
         summaryMessage += "\nAdd Whipped Cream? "+ hasWhippedCream;
+        summaryMessage += "\nAdd Whipped Cream? "+ hasChocolateChip;
         summaryMessage += "\nQuantity: " + quantity;
         summaryMessage += "\nTotal: $" + price;
         summaryMessage += "\nThank you! ";
