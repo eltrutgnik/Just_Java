@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
@@ -31,8 +32,11 @@ public class MainActivity extends ActionBarActivity {
         CheckBox chocolateChipCheckBox = (CheckBox) findViewById(R.id.chocolate_chip_checkbox);
         boolean hasChocolateChip = chocolateChipCheckBox.isChecked();
 
+        EditText text = (EditText) findViewById(R.id.name_field);
+        String value = text.getText().toString();
+
         int price = calculatePrice();
-        displayMessage(createOrderSummary(price, hasWhippedCream, hasChocolateChip));
+        displayMessage(createOrderSummary(price, hasWhippedCream, hasChocolateChip, value));
     }
 
     /**
@@ -88,12 +92,13 @@ public class MainActivity extends ActionBarActivity {
         return price;
     }
 
-    private String createOrderSummary(int price, boolean hasWhippedCream, boolean hasChocolateChip){
-        String cname = "James";
+    private String createOrderSummary(int price, boolean hasWhippedCream, boolean hasChocolateChip, String value){
+        //String cname = "James";
         //int price = calculatePrice();
-        String summaryMessage = "Name: " + cname ;
+
+        String summaryMessage = "Name: " + value ;
         summaryMessage += "\nAdd Whipped Cream? "+ hasWhippedCream;
-        summaryMessage += "\nAdd Whipped Cream? "+ hasChocolateChip;
+        summaryMessage += "\nAdd Chocolate Chip? "+ hasChocolateChip;
         summaryMessage += "\nQuantity: " + quantity;
         summaryMessage += "\nTotal: $" + price;
         summaryMessage += "\nThank you! ";
